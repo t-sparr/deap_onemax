@@ -1,6 +1,6 @@
 # OneMax with DEAP
 
-This is a small project I built to learn how to use the DEAP library for genetic algorithms. It solves the OneMax problem, which involves evolving a binary list (0s and 1s) into all 1s.
+This is a small project I built to learn how to use the DEAP library for genetic algorithms. It solves the OneMax problem, which involves evolving a binary list into all 1s.
 
 ## How It Works
 
@@ -34,7 +34,7 @@ Fitness: 500.0
 
 ## Running It
 
-If you're using a virtual environment:
+I used a virtual environment
 
 ```bash
 python -m venv .venv
