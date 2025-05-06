@@ -6,6 +6,22 @@ This is a small project I made to learn how to use the DEAP library for genetic 
 
 Each individual in the population is a list of 0s and 1s. The fitness function just adds up how many 1s are in the list. Over generations, the algorithm selects better individuals, crosses them over, and mutates them until it hopefully gets a perfect one (all 1s).
 
+## Sample Output
+
+Here’s what it looks like after running with IND_SIZE = 500:
+
+Gen 0: Max Fitness = 295.0
+Gen 1: Max Fitness = 306.0
+Gen 2: Max Fitness = 305.0
+...
+Gen 72: Max Fitness = 499.0
+Gen 73: Max Fitness = 500.0
+Gen 74: Max Fitness = 500.0
+...
+Gen 99: Max Fitness = 500.0
+Best individual: [1, 1, 1, ..., 1]
+Fitness: 500.0
+
 ## Files
 
 - `main.py` – entry point that runs everything
