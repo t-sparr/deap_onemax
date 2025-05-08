@@ -36,7 +36,7 @@ Fitness: 500.0
 * `setup_ga.py` – sets up the DEAP toolbox and individual structure
 * `evaluate.py` – defines the fitness function
 * `evolution.py` – handles the genetic algorithm loop
-* `requirements.txt` – just DEAP for now
+* `requirements.txt`
 
 ## Running It
 
