@@ -32,7 +32,7 @@ Fitness: 500.0
 ## File Overview
 
 * `main.py` – runs the algorithm
-* `config.py` – holds parameters like population size and mutation rate
+* `config.yml` – holds parameters like population size and mutation rate
 * `setup_ga.py` – sets up the DEAP toolbox and individual structure
 * `evaluate.py` – defines the fitness function
 * `evolution.py` – handles the genetic algorithm loop
