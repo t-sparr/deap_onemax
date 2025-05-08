@@ -7,11 +7,11 @@ This is a small project I built to learn how to use the DEAP library for genetic
 Each individual in the population is a list of 0s and 1s. The fitness function simply counts how many 1s are in the list. Over generations, the algorithm selects the better individuals, crosses them over, and mutates them until it eventually reaches a perfect solution (all 1s).
 
 ## Optimal: 80% Crossover / 20% Mutation
-
+![Alt Text](80-30.png)
 ## High Mutation
-
+![Alt Text](high_mutation_rate.png)
 ## Low Mutation, 100% Crossover
-
+![Alt Text](high_crossover_low_mutation.png)
 ## Sample Output
 
 This is what it looks like with `IND_SIZE = 500`:
