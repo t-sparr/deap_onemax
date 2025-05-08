@@ -1,8 +1,13 @@
 from deap import base, creator, tools
-from config import IND_SIZE
 from evaluate import eval_onemax
 import random
+import yaml
 
+def load_config():
+    with open('config.yml', 'r') as f:
+        return yaml.safe_load(f)
+    
+config = load_config()
 # Define the fitness function type — here we're maximizing a single objective.
 creator.create("FitnessMax", base.Fitness, weights=(1.0,))
 
@@ -17,7 +22,7 @@ toolbox.register("attr_bool", random.randint, 0, 1)
 
 # Register how to initialize an individual:
 # Use attr_bool repeatedly to fill a list of length IND_SIZE, wrapped as an Individual.
-toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_bool, IND_SIZE)
+toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.attr_bool, config['IND_SIZE'])
 
 # Register how to initialize a population:
 # A population is simply a list of individuals.
