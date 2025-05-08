@@ -14,6 +14,7 @@ def run_evolution():
     pop_size = config['POP_SIZE']
     next_gen = config['NGEN']
     crossover_prop = config['CXPB']
+    array_size = config['IND_SIZE']
     mutation_rate = config['MUTPB']
 
     
@@ -49,18 +50,71 @@ def run_evolution():
         pop[:] = offspring
 
         fits = [ind.fitness.values[0] for ind in pop]
-
         max_fit = max(fits)
         avg_fit = sum(fits) / len(fits)
-        gen_data.append({"Generation": gen, "Max": max_fit, "Avg": avg_fit})
-        print(f"Gen {gen}: Max Fitness = {max(fits)}")
+
+        fits = [ind.fitness.values[0] for ind in pop]
+        max_fit = max(fits)
+        avg_fit = sum(fits) / len(fits)
+
+        gen_data.append({
+            "Generation": gen,
+            "Max": max_fit,
+            "Avg": avg_fit
+        })
+
+        print(f"Gen {gen}: Max Fitness = {max_fit}")
 
 
     df = pd.DataFrame(gen_data)
-    df.plot(x="Generation", y=["Max","Avg"], title="Fitness Over Generations")
-    plt.xlabel("Generation")
-    plt.ylabel("Fitness")
-    plt.grid(True)
+    df["Max"] = df["Max"] / array_size * 100
+    df["Avg"] = df["Avg"] / array_size * 100
+  
+    
+
+    plt.rcParams.update({
+        "figure.facecolor": "#2b2d31",
+        "axes.facecolor": "#2b2d31",
+        "axes.edgecolor": "#cccccc",
+        "axes.labelcolor": "#ffffff",
+        "xtick.color": "#cccccc",
+        "ytick.color": "#cccccc",
+        "text.color": "#ffffff",
+        "legend.edgecolor": "#2b2d31",
+        "axes.titleweight": "bold"
+    })
+
+
+    plt.figure(figsize=(10, 6))
+
+    plt.plot(df["Generation"], df["Max"], label="Max Fitness", linewidth=2, color="#2a66d5")
+    plt.plot(df["Generation"], df["Avg"], label="Average Fitness", linestyle="--", linewidth=2, color="#b34c7e")
+
+    plt.title("Genetic Algorithm Performance", fontsize=14)
+    plt.xlabel("Generation", fontsize=12)
+    plt.ylabel("Accuracy (%)", fontsize=12)
+    plt.ylim(50, 100)  # adjust to zoom in nicely
+    
+
+    info_text = (
+        f"Indvidual Size: {array_size}   POP_SIZE: {pop_size}   Number of Generations: {next_gen}  "
+        f"\nCrossover Rate: {int(crossover_prop*100)}%  Mutation Rate: {int(mutation_rate*100) }%"
+    )
+
+    plt.annotate(
+    info_text,
+    xy=(0.5, -0.18),
+    xycoords='axes fraction',
+    ha='center',
+    fontsize=10,
+    fontfamily='monospace',
+    fontweight='light',
+    color='#bbbbbb',
+    bbox=dict(facecolor='#1e1e1e', edgecolor='none', boxstyle='round,pad=0.4', alpha=0.8)
+    )
+    plt.grid(True, linestyle="--", alpha=0.3)
+    plt.legend()
+
     plt.tight_layout()
     plt.show()
 
